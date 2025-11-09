@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "240236840777",
+    "project_id": "bookswap-ae85c",
+    "storage_bucket": "bookswap-ae85c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240236840777:android:bac3e5471401e313a07c98",
+        "android_client_info": {
+          "package_name": "com.example.book_swap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240236840777-0ffhqkl7na2ku9mf4iob7cuh370afk1q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaG3QgMR4nLx7JId69-3SU4RsFs2hTLy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240236840777-0ffhqkl7na2ku9mf4iob7cuh370afk1q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "240236840777-hbrc7l4v0v2e3arqm3agjjt8ot53pehc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bookSwap"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240236840777:android:ea2fa36225668826a07c98",
+        "android_client_info": {
+          "package_name": "com.example.bookswap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240236840777-q6cb3eelffo8u29ks0q9o6h3i5n5ikrf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookswap",
+            "certificate_hash": "fd3ff4ba5fb0cfe58dc7dc88a6db337b3fa43862"
+          }
+        },
+        {
+          "client_id": "240236840777-0ffhqkl7na2ku9mf4iob7cuh370afk1q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaG3QgMR4nLx7JId69-3SU4RsFs2hTLy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240236840777-0ffhqkl7na2ku9mf4iob7cuh370afk1q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "240236840777-hbrc7l4v0v2e3arqm3agjjt8ot53pehc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bookSwap"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
