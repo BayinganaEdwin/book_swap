@@ -542,8 +542,9 @@ This project is licensed under the MIT License.
 
 ## Author
 
-BayinganaEdwin
+BayinganaEdwin - e.bayingana@alustudent.com
 
 ---
 
-**Note**: Ensure all Firebase services are properly configured before building. The app requires active Firebase project with Authentication, Firestore, and Storage enabled.
+**Note**: 
+Ensure all Firebase services are properly configured before building. The app requires active Firebase project with Authentication, Firestore, and Storage enabled.
