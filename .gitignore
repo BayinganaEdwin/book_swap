@@ -44,3 +44,62 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 firepit-log.txt
+
+# Sensitive files - Firebase configuration (contains API keys)
+# Note: These files are required for the app to run but should not be committed
+# Each developer should use their own Firebase project configuration
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+macos/Runner/GoogleService-Info.plist
+web/firebase-config.js
+
+# Environment and configuration files
+.env
+.env.local
+.env.*.local
+*.env
+local.properties
+android/local.properties
+
+# API keys and secrets
+**/secrets/
+**/keys/
+**/*secret*
+**/*key*.json
+**/*token*
+**/api_keys.*
+
+# User-specific files
+**/xcuserdata/
+**/*.xcuserstate
+**/.swiftpm/
+**/Pods/
+ios/Podfile.lock
+macos/Podfile.lock
+
+# Firebase and backend configs (if using separate config files)
+firebase-config.json
+firebase-options.local.dart
+lib/firebase_options.local.dart
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+logs/
+tmp/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
