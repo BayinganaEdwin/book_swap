@@ -13,37 +13,6 @@ class NotificationsScreen extends StatefulWidget {
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
   final NotificationService _notificationService = NotificationService();
-  bool _popupsEnabled = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadPreferences();
-  }
-
-  Future<void> _loadPreferences() async {
-    final auth = Provider.of<AuthProvider>(context, listen: false);
-    if (auth.user != null) {
-      final enabled = await _notificationService.getNotificationPreferences(auth.user!.uid);
-      if (mounted) {
-        setState(() {
-          _popupsEnabled = enabled;
-        });
-      }
-    }
-  }
-
-  Future<void> _togglePopups(bool value) async {
-    final auth = Provider.of<AuthProvider>(context, listen: false);
-    if (auth.user != null) {
-      await _notificationService.saveNotificationPreferences(auth.user!.uid, value);
-      if (mounted) {
-        setState(() {
-          _popupsEnabled = value;
-        });
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,49 +62,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // Notification Settings
-            Card(
-              margin: const EdgeInsets.all(16),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.notifications_active,
-                      color: theme.colorScheme.primary,
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Notification Popups',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: theme.colorScheme.onSurface,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            'Show popup notifications when swap status changes',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Switch(
-                      value: _popupsEnabled,
-                      onChanged: _togglePopups,
-                    ),
-                  ],
-                ),
-              ),
-            ),
             // Notifications List
             Expanded(
               child: StreamBuilder<List<Map<String, dynamic>>>(

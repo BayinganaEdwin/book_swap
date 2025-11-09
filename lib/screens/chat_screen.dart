@@ -322,6 +322,9 @@ class ChatDetailScreen extends StatefulWidget {
 class _ChatDetailScreenState extends State<ChatDetailScreen> {
   final _messageController = TextEditingController();
   final _scrollController = ScrollController();
+  final Set<String> _seenMessageIds = {};
+  bool _isMarkingAsRead = false;
+  bool _hasInitialMark = false;
 
   @override
   void initState() {
@@ -329,6 +332,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
     // Mark chat as read when opened
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _markAsRead();
+      _hasInitialMark = true;
     });
   }
 
@@ -340,14 +344,45 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   }
 
   Future<void> _markAsRead() async {
+    if (_isMarkingAsRead) return; // Prevent concurrent calls
+    
     final auth = Provider.of<AuthProvider>(context, listen: false);
     final firestore = FirestoreService();
     if (auth.user != null) {
       try {
+        _isMarkingAsRead = true;
         await firestore.markChatAsRead(widget.chatId, auth.user!.uid);
       } catch (e) {
         // Silently fail - not critical
+      } finally {
+        _isMarkingAsRead = false;
       }
+    }
+  }
+
+  void _handleNewMessages(List<dynamic> messages) {
+    final auth = Provider.of<AuthProvider>(context, listen: false);
+    if (auth.user == null || !_hasInitialMark) return;
+
+    // Check if there are any new messages from the other user that we haven't seen
+    bool hasNewUnseenMessage = false;
+    for (final message in messages) {
+      final messageId = message['id']?.toString() ?? '';
+      final senderId = message['senderId'];
+      
+      // If message is from the other user and we haven't seen it before
+      if (senderId != null && 
+          senderId != auth.user!.uid && 
+          messageId.isNotEmpty &&
+          !_seenMessageIds.contains(messageId)) {
+        _seenMessageIds.add(messageId);
+        hasNewUnseenMessage = true;
+      }
+    }
+
+    // Mark as read if there are new messages from the other user
+    if (hasNewUnseenMessage) {
+      _markAsRead();
     }
   }
 
@@ -531,6 +566,13 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                   }
 
                   final messages = snapshot.data ?? [];
+                  
+                  // Mark as read when new messages arrive while viewing the chat
+                  if (snapshot.hasData && messages.isNotEmpty) {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      _handleNewMessages(messages);
+                    });
+                  }
                   
                   if (messages.isEmpty) {
                     return Center(

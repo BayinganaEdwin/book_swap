@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 import '../services/notification_service.dart';
+import '../services/firestore_service.dart';
 import '../widgets/notification_button.dart';
 import 'notifications_screen.dart';
 
@@ -12,8 +13,39 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool notifications = true;
   bool emailUpdates = true;
+  final NotificationService _notificationService = NotificationService();
+  bool _popupsEnabled = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadNotificationPreferences();
+  }
+
+  Future<void> _loadNotificationPreferences() async {
+    final auth = Provider.of<AuthProvider>(context, listen: false);
+    if (auth.user != null) {
+      final enabled = await _notificationService.getNotificationPreferences(auth.user!.uid);
+      if (mounted) {
+        setState(() {
+          _popupsEnabled = enabled;
+        });
+      }
+    }
+  }
+
+  Future<void> _togglePopups(bool value) async {
+    final auth = Provider.of<AuthProvider>(context, listen: false);
+    if (auth.user != null) {
+      await _notificationService.saveNotificationPreferences(auth.user!.uid, value);
+      if (mounted) {
+        setState(() {
+          _popupsEnabled = value;
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,24 +78,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   color: theme.colorScheme.outline.withValues(alpha: 0.2),
                 ),
               ),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: theme.colorScheme.primaryContainer,
-                  child: Icon(
-                    Icons.person_rounded,
-                    color: theme.colorScheme.onPrimaryContainer,
-                  ),
-                ),
-                title: const Text(
-                  'Profile',
-                  style: TextStyle(fontWeight: FontWeight.w600),
-                ),
-                subtitle: Text(
-                  auth.user?.email ?? 'N/A',
-                  style: TextStyle(
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                  ),
-                ),
+              child: FutureBuilder<String?>(
+                future: auth.user != null
+                    ? FirestoreService().getUserName(auth.user!.uid)
+                    : Future.value(null),
+                builder: (context, snapshot) {
+                  final userName = snapshot.data;
+                  return ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      child: Icon(
+                        Icons.person_rounded,
+                        color: theme.colorScheme.onPrimaryContainer,
+                      ),
+                    ),
+                    title: Text(
+                      userName ?? 'User',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                      ),
+                    ),
+                    subtitle: Text(
+                      auth.user?.email ?? 'N/A',
+                      style: TextStyle(
+                        color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                        fontSize: 14,
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(height: 24),
@@ -138,6 +182,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+              ),
+            ),
+            const SizedBox(height: 12),
+            Card(
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+                side: BorderSide(
+                  color: theme.colorScheme.outline.withValues(alpha: 0.2),
+                ),
+              ),
+              child: SwitchListTile(
+                title: const Text('Notification Popups'),
+                subtitle: Text(
+                  'Show popup notifications when swap status changes',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                  ),
+                ),
+                value: _popupsEnabled,
+                onChanged: _togglePopups,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
             const SizedBox(height: 12),
