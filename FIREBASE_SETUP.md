@@ -37,10 +37,10 @@ The Firebase configuration files (`google-services.json`, `GoogleService-Info.pl
 
 Make sure the following services are enabled in your Firebase project:
 
-- ✅ **Authentication** (Email/Password provider)
-- ✅ **Cloud Firestore** (Database)
-- ✅ **Firebase Storage** (File storage)
-- ✅ **Firebase App Check** (Security)
+- **Authentication** (Email/Password provider)
+- **Cloud Firestore** (Database)
+- **Firebase Storage** (File storage)
+- **Firebase App Check** (Security)
 
 ## Firebase App Check Configuration
 

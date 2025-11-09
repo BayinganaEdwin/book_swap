@@ -1,17 +1,17 @@
-# BookSwap 📚
+# BookSwap 
 
 A Flutter-based mobile application for book swapping, allowing users to list, browse, and swap books with other users. Built with Firebase backend services for authentication, real-time data, and cloud storage.
 
 ## Features
 
-- 🔐 **Authentication**: Email/password signup with email verification
-- 📖 **Book Management**: Post, edit, and delete book listings with images
-- 🔍 **Search & Browse**: Search books by title/author and browse available listings
-- 💬 **Real-time Chat**: Messaging system with unread message counts
-- 🔄 **Swap Offers**: Request, accept, and decline book swap offers
-- 🔔 **Notifications**: Real-time notifications for swap events with popup support
-- 🎨 **Dark Theme**: Modern dark UI with Google Fonts (Inter)
-- 📱 **Cross-platform**: Supports Android, iOS, Web, macOS, Linux, and Windows
+- **Authentication**: Email/password signup with email verification
+- **Book Management**: Post, edit, and delete book listings with images
+- **Search & Browse**: Search books by title/author and browse available listings
+- **Real-time Chat**: Messaging system with unread message counts
+- **Swap Offers**: Request, accept, and decline book swap offers
+- **Notifications**: Real-time notifications for swap events with popup support
+- **Dark Theme**: Modern dark UI with Google Fonts (Inter)
+- **Cross-platform**: Supports Android, iOS, Web, macOS, Linux, and Windows
 
 ## Architecture
 
