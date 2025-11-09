@@ -1,4 +1,4 @@
-# BookSwap 
+# BookSwap
 
 A Flutter-based mobile application for book swapping, allowing users to list, browse, and swap books with other users. Built with Firebase backend services for authentication, real-time data, and cloud storage.
 
@@ -17,7 +17,7 @@ A Flutter-based mobile application for book swapping, allowing users to list, br
 
 The following diagram shows the layered architecture of the BookSwap application. **Note**: This is an interactive Mermaid diagram - you can zoom and pan to explore different layers and connections.
 
-> **[View the diagram on Mermaid Chart](https://mermaidchart.com/play?utm_source=mermaid_live_editor&utm_medium=share#pako:eNqVll1vmzAUhv8K8m6TCMw3F5WStEiTmgqNdZFGduEGk6AAjozplqX97zOBUkxwpOWC8PIcn_PaPlicwZbEGHhgR9Fxr3xfbAqF_8rqpXmwAX5WMYapMj8elUd0wnQDmphBXLilGBdln9a_uRbNK7Zv6K8Bg9FDjtLsB6Zpkm4RS0kxHqhHC0p-l3icGlFASrYg5DDOzWh1ekxLlha7cjzCiurR95hxN-MRdvQQpzdqONFyj9g4c6MnwroZSixoahRiNu4RF_GnGF39dRrvMLta_bV2mdgS0XhQbw05YYzkT-h1iHTB74LvPxnaXRtCTL26uMD0vzyveOdlV5ZXjWXlQgdVVzB6LnkvDllXq7u5auOQIYaVFSrQDue4YNe9HDSdGlDymsbCVAJ4sTQgN2ph-ppucXldI2zfhiagVyKEkZ9SXDJC8QjVo5ATbn2EiTshBsg91tVeUImVBdoe6rCeS1-LOlzb7VXzYbTMSBUrnds-1D_HtX771Ohl5YfJco-3h3Gfc02ZTu_4jrQSilJvJGylIUpTlJYobVE6onRFqalC4ea61oSgtehmLbpprkEzJGzzBM18QihKXZRGP0PYZPDbDGET47cZwsaDr4tUyODzh7Pp3ds3jLIpS_N6iyhGefnWGQnbkOZdeT7G_I_joOezxs9fP9lcv8HMG8wR-pKdMlzvepJmmfcFa4mZJAKCcqTLkSFHphxZcmTLkSNHrhzxDpOx4GM5YgPHMRIQlKLwY1SSJPo2FhCUI12ODCnyu1pObIs2fChHuhwZAgIT_lmSxsBjtMITkGPKvxa4BOd60AawPT_KN8DjtzGih_oIe-djjqj4SUj-MYySarcHXoKykqvq0oH3KeIHYd49pfwAwnRJqoIBz7SMSxLgncEf4KkzDVrQdizbcVzoWq45ASfg6Zo9c11dMxxV11Roqfb7BPy91FVnrulC07FtqLqOozr2-z-9DKl_)**
+> **[View the Architecture diagram on Mermaid Chart](https://mermaidchart.com/play?utm_source=mermaid_live_editor&utm_medium=share#pako:eNqVll1vmzAUhv8K8m6TCMw3F5WStEiTmgqNdZFGduEGk6AAjozplqX97zOBUkxwpOWC8PIcn_PaPlicwZbEGHhgR9Fxr3xfbAqF_8rqpXmwAX5WMYapMj8elUd0wnQDmphBXLilGBdln9a_uRbNK7Zv6K8Bg9FDjtLsB6Zpkm4RS0kxHqhHC0p-l3icGlFASrYg5DDOzWh1ekxLlha7cjzCiurR95hxN-MRdvQQpzdqONFyj9g4c6MnwroZSixoahRiNu4RF_GnGF39dRrvMLta_bV2mdgS0XhQbw05YYzkT-h1iHTB74LvPxnaXRtCTL26uMD0vzyveOdlV5ZXjWXlQgdVVzB6LnkvDllXq7u5auOQIYaVFSrQDue4YNe9HDSdGlDymsbCVAJ4sTQgN2ph-ppucXldI2zfhiagVyKEkZ9SXDJC8QjVo5ATbn2EiTshBsg91tVeUImVBdoe6rCeS1-LOlzb7VXzYbTMSBUrnds-1D_HtX771Ohl5YfJco-3h3Gfc02ZTu_4jrQSilJvJGylIUpTlJYobVE6onRFqalC4ea61oSgtehmLbpprkEzJGzzBM18QihKXZRGP0PYZPDbDGET47cZwsaDr4tUyODzh7Pp3ds3jLIpS_N6iyhGefnWGQnbkOZdeT7G_I_joOezxs9fP9lcv8HMG8wR-pKdMlzvepJmmfcFa4mZJAKCcqTLkSFHphxZcmTLkSNHrhzxDpOx4GM5YgPHMRIQlKLwY1SSJPo2FhCUI12ODCnyu1pObIs2fChHuhwZAgIT_lmSxsBjtMITkGPKvxa4BOd60AawPT_KN8DjtzGih_oIe-djjqj4SUj-MYySarcHXoKykqvq0oH3KeIHYd49pfwAwnRJqoIBz7SMSxLgncEf4KkzDVrQdizbcVzoWq45ASfg6Zo9c11dMxxV11Roqfb7BPy91FVnrulC07FtqLqOozr2-z-9DKl_)**
 
 ```mermaid
 graph TB
@@ -34,39 +34,39 @@ graph TB
             A9[NotificationsScreen]
             A10[SettingsScreen]
         end
-        
+
         subgraph "Widgets"
             W1[BookCard]
             W2[BottomNav]
             W3[NotificationButton]
             W4[NotificationListener]
         end
-        
+
         subgraph "Models"
             M1[Book Model]
             M2[User Model]
         end
     end
-    
+
     subgraph "State Management Layer"
         P1[AuthProvider]
         P2[BookProvider]
     end
-    
+
     subgraph "Services Layer"
         S1[AuthService]
         S2[FirestoreService]
         S3[StorageService]
         S4[NotificationService]
     end
-    
+
     subgraph "Firebase Backend"
         F1[Firebase Auth]
         F2[Cloud Firestore]
         F3[Firebase Storage]
         F4[Firebase App Check]
     end
-    
+
     A1 --> P1
     A2 --> P1
     A3 --> P2
@@ -77,27 +77,27 @@ graph TB
     A8 --> P2
     A9 --> P2
     A10 --> P1
-    
+
     W1 --> P2
     W3 --> P2
     W4 --> P2
-    
+
     P1 --> S1
     P2 --> S2
     P2 --> S3
     P2 --> S4
-    
+
     S1 --> F1
     S2 --> F2
     S3 --> F3
     S2 --> F4
-    
+
     F2 -.->|Real-time Streams| S2
     S2 -.->|State Updates| P2
     P2 -.->|UI Updates| A3
     P2 -.->|UI Updates| A5
     P2 -.->|UI Updates| A8
-    
+
     style A1 fill:#e1f5ff
     style A2 fill:#e1f5ff
     style A3 fill:#e1f5ff
@@ -250,11 +250,13 @@ flutter build appbundle --release
 ```
 
 **Requirements:**
+
 - Android SDK installed
 - `ANDROID_HOME` environment variable set
 - Android device connected or emulator running
 
 **Run on device/emulator:**
+
 ```bash
 flutter run
 ```
@@ -270,16 +272,19 @@ flutter build ios --release
 ```
 
 **Requirements:**
+
 - macOS with Xcode installed
 - iOS Simulator or physical device
 - Valid Apple Developer account (for release builds)
 
 **Run on simulator:**
+
 ```bash
 flutter run
 ```
 
 **Run on device:**
+
 1. Open `ios/Runner.xcworkspace` in Xcode
 2. Select your device
 3. Click Run, or use `flutter run`
@@ -295,11 +300,13 @@ flutter build web --release
 ```
 
 **Run locally:**
+
 ```bash
 flutter run -d chrome
 ```
 
 **Deploy:**
+
 - Use Firebase Hosting:
   ```bash
   firebase deploy --only hosting
@@ -317,10 +324,12 @@ flutter build macos --release
 ```
 
 **Requirements:**
+
 - macOS with Xcode
 - Valid code signing certificate (for release)
 
 **Run:**
+
 ```bash
 flutter run -d macos
 ```
@@ -336,10 +345,12 @@ flutter build linux --release
 ```
 
 **Requirements:**
+
 - Linux with development tools installed
 - CMake, Ninja, pkg-config
 
 **Run:**
+
 ```bash
 flutter run -d linux
 ```
@@ -355,10 +366,12 @@ flutter build windows --release
 ```
 
 **Requirements:**
+
 - Windows with Visual Studio
 - Windows SDK
 
 **Run:**
+
 ```bash
 flutter run -d windows
 ```
@@ -507,19 +520,23 @@ notifications/
 ### Common Issues
 
 1. **Firebase initialization errors**
+
    - Verify `google-services.json` / `GoogleService-Info.plist` are in correct locations
    - Check Firebase project configuration
 
 2. **Image upload failures**
+
    - App falls back to base64 encoding automatically
    - Check Firebase Storage rules
 
 3. **Build errors**
+
    - Run `flutter clean`
    - Run `flutter pub get`
    - Delete `build/` folder and rebuild
 
 4. **iOS build issues**
+
    - Run `cd ios && pod install && cd ..`
    - Clean Xcode build folder (Product → Clean Build Folder)
 
@@ -546,5 +563,5 @@ BayinganaEdwin - e.bayingana@alustudent.com
 
 ---
 
-**Note**: 
+**Note**:
 Ensure all Firebase services are properly configured before building. The app requires active Firebase project with Authentication, Firestore, and Storage enabled.
